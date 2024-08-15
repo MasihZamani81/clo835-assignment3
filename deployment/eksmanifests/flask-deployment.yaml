@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  namespace: final
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+        - name: flask-container
+          image: 160045352367.dkr.ecr.us-east-1.amazonaws.com/my-repo:flaskapp-v0.1
+          ports:
+            - containerPort: 81
+          env:
+            - name: DBHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DBHOST
+            - name: DBPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DBPORT
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: MYSQL_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: MYSQL_PASSWORD
+            - name: BACKGROUND_IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: BACKGROUND_IMAGE_URL
+            - name: HEADER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: HEADER_NAME
+      imagePullSecrets:
+        - name: ecr-registry-secret

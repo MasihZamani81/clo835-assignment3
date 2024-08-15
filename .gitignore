@@ -1,0 +1,31 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# SSH keys
+secret/mykey
+secret/mykey.pub
+
+# Local environment files
+*.env
+.env
+
+# Log files
+*.log
+
+# Node modules (if using Node.js)
+node_modules/
+
+# Python virtual environments
+venv/
+__pycache__/
+
+# AWS config and credentials
+.aws/
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+secret/
