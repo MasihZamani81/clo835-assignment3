@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mysql-container
-          image: 160045352367.dkr.ecr.us-east-1.amazonaws.com/my-repo:mysql-v0.1
+          image: 808973727775.dkr.ecr.us-east-1.amazonaws.com/clo835-project:mysql-v0.1
           ports:
             - containerPort: 3306
           env:

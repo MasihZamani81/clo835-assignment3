@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: 160045352367.dkr.ecr.us-east-1.amazonaws.com/my-repo:flaskapp-v0.1
+          image: 808973727775.dkr.ecr.us-east-1.amazonaws.com/clo835-project:flaskapp-v0.1  # Use the correct Flask image
           ports:
             - containerPort: 81
           env:
